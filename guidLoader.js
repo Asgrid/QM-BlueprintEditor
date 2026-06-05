@@ -1,5 +1,8 @@
 var NAMESPACES = {};
 
+/**
+ * Loads namespaces and fills existing datalist elements.
+ */
 function loadGUIDs() {
     for (let tag in GUIDS) {
         if (tag == 'default') continue;
@@ -38,6 +41,11 @@ function loadGUIDs() {
     }
 }
 
+/**
+ * Returns all IDs that belong to a specific tag.
+ * @param {string} name 
+ * @returns {string[]}
+ */
 function getTagList(name) {
     let tag = GUIDS[name];
     let all = [];
@@ -54,6 +62,12 @@ function getTagList(name) {
     return all;
 }
 
+/**
+ * Finds the respective ID for an alias.
+ * @param {string} namespace - Tag
+ * @param {string} txt - Name or label
+ * @returns 
+ */
 function toID(namespace, txt) {
     if (txt === null) return null;
     let split = txt.split('.');
@@ -70,14 +84,26 @@ function toID(namespace, txt) {
     return txt; // Give up
 }
 
+/**
+ * Returns a mapping function for the specified namespace.
+ * @param {string} namespace 
+ */
 function toIDMap(namespace) {
     return (x) => toID(namespace, x);
 }
 
+/**
+ * Returns the namespace and label that represents a GUID.
+ * @param {string} id 
+ */
 function toNamespace(id) {
     return NAMESPACES[id] ?? id;
 }
 
+/**
+ * Returns whether a tag exists in GUIDs.
+ * @param {string} name 
+ */
 function checkNamespace(name) {
     return Object.hasOwn(GUIDS, name);
 }

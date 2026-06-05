@@ -1,4 +1,10 @@
+/**
+ * Stores all blueprint data
+ */
 class Blueprint {
+    /**
+     * Creates blueprint object from base64 string.
+     */
     constructor(text) {
         if (!text)
             return;
@@ -45,6 +51,10 @@ class Blueprint {
         encodeBP();
     }
 
+    /**
+     * Encodes the blueprint data back into text.
+     * @returns {string} base64 encoded text
+     */
     toBase64() {
         try{
             let obj = {

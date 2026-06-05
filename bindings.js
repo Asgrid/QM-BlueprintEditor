@@ -1,7 +1,19 @@
+/**
+ * Stores the value of an element into a blueprint's palette.
+ * Input element must have data-index attribute.
+ * @param {HTMLInputElement} elem 
+ */
 function bindPalette(elem) {
     _Blueprint.Tilemaps.setPalette(elem.value, elem.dataset.index);
 }
 
+/**
+ * Stores the value of an element into an entity's property.
+ * @param {number} entityIndex - Entity position in blueprint list
+ * @param {string} param - Property to modify
+ * @param {string} value - Value of the property
+ * @param {string} param2 - Extra argument (used for Prop and Buff)
+ */
 function bindEntity(entityIndex, param, value, param2 = undefined) {
     let ent = _Blueprint.Entities[entityIndex];
     switch (param) {

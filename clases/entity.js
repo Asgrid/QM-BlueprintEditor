@@ -1,16 +1,9 @@
 class Entity {
-    /*
-    Properties : {[k : string]: any} = $state({});
-    Id : string = $state("");
-    Size : {X : number, Y : number} = {X: 1, Y:1};
-    Position : {X: number, Y : number} = {X: 0, Y: 0};
-    Buffs: string[] = $state([]);
-    Spawnable: Entity | string | null = $state(null);
-    Receivable: Entity | string | null = $state(null);
-    Projectile: string | null = $state(null);
-    isStack : boolean = false;
-    */
-
+    /**
+     * Stores and handles Entity data
+     * @param {object} obj - JSON data for this entity
+     * @param {Entity} stack - Parent entity (used with spawnable/receivable properties)
+     */
     constructor(obj, stack = undefined) {
         if (stack)
             this.isStack = true;
@@ -71,6 +64,10 @@ class Entity {
         }
     }
 
+    /**
+     * Returns a list of all generic properties.
+     * @returns [{Key, Value}]
+     */
     getPropertyList() {
         let list = [];
         for (let prop in this.Properties) {
@@ -79,42 +76,68 @@ class Entity {
         return list;
     }
 
+    /**
+     * Sets the value of a generic property.
+     * @param {string} Key 
+     * @param {string} Value 
+     */
     setProperty(Key, Value){
         this.Properties[Key] = Value;
         renderEntities();
         encodeBP();
     }
 
+    /**
+     * Adds an empty buff field.
+     */
     addBuff() {
         this.Buffs.push("");
         renderEntities();
         encodeBP();
     }
 
+    /**
+     * Sets the buff ID at the specified index.
+     * @param {string} buff 
+     * @param {number} index 
+     */
     setBuff(buff, index) {
         this.Buffs[index] = buff;
         renderEntities();
         encodeBP();
     }
 
+    /**
+     * Removes the last buff in the list.
+     */
     removeBuff() {
         this.Buffs.pop();
         renderEntities();
         encodeBP();
     }
 
+    /**
+     * Removes the Spawnable property.
+     */
     removeSpawnable() {
         this.Spawnable = null;
         renderEntities();
         encodeBP();
     }
 
+    /**
+     * Removes the Projectile property.
+     */
     removeProjectile() {
         this.Projectile = null;
         renderEntities();
         encodeBP();
     }
 
+    /**
+     * Adds a property with a given name. Some properties are handled as special cases, the rest are generic fields.
+     * @param {string} key 
+     */
     addProperty(key) {
         switch (key) {
             case "Spawnable":
@@ -140,12 +163,20 @@ class Entity {
         encodeBP();
     }
 
+    /**
+     * Removes a generic property.
+     * @param {string} key 
+     */
     removeProperty(key) {
         delete this.Properties[key];
         renderEntities();
         encodeBP();
     }
 
+    /**
+     * Stores this Entity's data as a JSON object, converting namespaces back into QM IDs.
+     * @returns {object} entity data object
+     */
     toJson() {
         let buffs = [];
         for (let b of this.Buffs) {
@@ -158,6 +189,8 @@ class Entity {
             "Size": this.Size,
             "Buffs": buffs
         };
+
+        //Spawnable
         if (this.Spawnable) {
             obj["Spawnable"] = this.isStack
                 ? (
@@ -167,6 +200,8 @@ class Entity {
                 )
                 : (this.Spawnable)?.toJson();
         }
+
+        //Receivable
         if (this.Receivable) {
             obj["Receivable"] = this.isStack
                 ? (
@@ -176,12 +211,17 @@ class Entity {
                 )
                 : (this.Spawnable)?.toJson();
         }
+
+        //Projectile
         if (this.Projectile) {
             obj["Projectile"] = toID('Spawnables', this.Projectile);
         }
+        
+        //Generics
         for (let prop in this.Properties) {
             if (prop === "default")
                 continue;
+            // If this property has a set of values specified in GUIDs 
             if (checkNamespace(prop))
                 obj[prop] = toID(prop, this.Properties[prop]);
             else

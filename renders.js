@@ -1,3 +1,6 @@
+/**
+ * Renders the form elements for a blueprint's palette.
+ */
 function renderPalette() {
     let palList = $('bpPalettes');
     let html = '';
@@ -11,6 +14,9 @@ function renderPalette() {
     palList.innerHTML = html;
 }
 
+/**
+ * Renders the form elements for a blueprint's layers.
+ */
 function renderLayers() {
     let layerList = $('bpLayers');
     layerList.innerHTML = '';
@@ -28,6 +34,9 @@ function renderLayers() {
     }
 }
 
+/**
+ * Renders the form elements for all entities.
+ */
 function renderEntities() {
     let entityList = $('bpEntities');
     let html = '';
@@ -41,10 +50,18 @@ function renderEntities() {
     entityList.innerHTML = html;
 }
 
+/**
+ * Re-renders one entity's form, leaving the rest untouched.
+ */
 function updateEntity(entity, index){
     $('fldEnt_'+index).innerHTML = renderEntity(entity, index);
 }
 
+/**
+ * Renders the form elements for one entity in the list.
+ * @param {Entity} entity 
+ * @param {number} index 
+ */
 function renderEntity(entity, index) {
     let i;
     let html =  `   <legend>${entity.Id}</legend>
@@ -95,6 +112,7 @@ function renderEntity(entity, index) {
     }
 
     i = 0;
+    //Generic properties
     for (let {Key, Value} of entity.getPropertyList()) {
         html += `<p>
                     <b>${Key}</b>:
@@ -135,6 +153,7 @@ function renderEntity(entity, index) {
         }
     }
 
+    //'Add property' button
     html += `<p>
                 <input id="ent_${index}_newprop">
                 <button onclick="
