@@ -1,0 +1,57 @@
+body {
+    background-color: #c2c2c2;
+}
+
+space {
+    display: inline-block;
+    width: 10px;
+}
+
+.main {
+    background-color: #F9F7F7;
+    margin: 1%;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.row {
+    display: flex;
+}
+
+.column {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.bpArea {
+    resize: none;
+    min-height: 10em;
+}
+
+.bperror {
+    border: 2px solid red;
+}
+
+.tileIndex {
+    width: 3em;
+    background-color: #eee;
+    border: 1px solid #999;
+    border-radius: 5px;
+}
+
+.tileIndex {
+    width: 3em;
+    background-color: #eee;
+    border: 1px solid #999;
+    border-radius: 5px;
+}
+
+.tileGrid {
+    display: inline-grid;
+}
+
+ul {
+    list-style-type: none;
+}

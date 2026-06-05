@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Blueprint Editor</title>
+    <link rel='stylesheet' href='index.css'>
+    <script src="renders.js"></script>
+    <script src="bindings.js"></script>
+    <script src="components.js"></script>
+    <script src="guids.js"></script>
+    <script src="guidLoader.js"></script>
+    <script src="clases/entity.js"></script>
+    <script src="clases/tilemap.js"></script>
+    <script src="clases/bp.js"></script>
+    <script src="index.js"></script>
+    <link rel="icon" type="image/png" href="favicon.ico">
+</head>
+<body>
+    
+<div class="main">
+    <datalist id="tileList"></datalist>
+    <datalist id="layerList"></datalist>
+    <datalist id="entityList"></datalist>
+    <datalist id="buffList"></datalist>
+    <div class="column">
+        <div class="row" style="justify-content: space-between">
+            <label for="txtBlueprint"><b>Blueprint text:</b></label>
+            <button onclick="defaultBP()">Set default</button>
+        </div>
+        <textarea id="txtBlueprint" class="bpArea" value="" onchange="decodeBP();"></textarea>
+        <div id="divBPError" style="text-align:end; color: red; display: none">Invalid blueprint format</div>
+    </div>
+    <div id="divMain" style="display: none" onchange="encodeBP()">
+        <p>
+            <b>Version</b>: <space></space> <input id="lblVersion" readonly disabled value=""/>
+        </p>
+        <p>
+            <b>Size</b>:
+            <space></space>
+            <input aria-label="Blueprint Width" id="txtWidth" type="number" value="1" onchange="
+                _Blueprint.setWidth(this.value);
+            ">
+            <space></space> x <space></space>
+            <input aria-label="Blueprint Height" id="txtHeight" type="number" value="1" onchange="
+                _Blueprint.setHeight(this.value);
+            ">
+        </p>
+        <p>
+            <b>Pallete</b>:
+            <space></space>
+            <button onclick="_Blueprint.Tilemaps.removePalette();">-</button>
+            <button onclick="_Blueprint.Tilemaps.addPalette();">+</button>
+        </p>
+        <ul id="bpPalettes"></ul>
+        <p>
+            <b>Layers</b>:
+            <space></space>
+            <button onclick="_Blueprint.Tilemaps.removeLayer()">-</button>
+            <button onclick="_Blueprint.Tilemaps.addLayer()">+</button>
+            <space></space>
+            <input id="chGrid" type="checkbox" onchange="renderLayers()"><label for="chGrid">Grid display</label></p>
+            <ul id="bpLayers"></ul>
+        <p>
+            <b>Entities</b>:
+            <space></space>
+            <button onclick="_Blueprint.addEntity()">+</button>
+            <space></space>
+        </p>
+        <div id="bpEntities"></div>
+        <!--{#each blueprint.Entities as entity, index}
+            <EntityDisplay parent={null} {entity} {index} {blueprint}/>
+        {/each}-->
+    </div>
+    <iframe style="display: none" onload="init()"></iframe>
+</div>
+</body>
+</html>
