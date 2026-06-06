@@ -28,6 +28,14 @@ class Tilemap {
             this.layermaps.push({layer: toNamespace(k), tiles: this.tilemap_to_bytes(mainRoom.Tilemaps[k])});
         }
     }
+    
+    get Layers(){
+        return this.layermaps;
+    }
+
+    get Palette(){
+        return this.palette;
+    }
 
     /**
      * Transforms a base64 string into an array of bytes, which is how the game stores map data.

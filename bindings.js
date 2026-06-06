@@ -15,7 +15,13 @@ function bindPalette(elem) {
  * @param {string} param2 - Extra argument (used for Prop and Buff)
  */
 function bindEntity(entityIndex, param, value, param2 = undefined) {
-    let ent = _Blueprint.Entities[entityIndex];
+    let ent = null;
+    if (entityIndex<0) {
+        let realIndex = Math.abs(entityIndex)-1;
+        ent = _Blueprint.Entities[realIndex];
+        ent = ent.Spawnable ?? ent.Receivable;
+    } else
+        ent = _Blueprint.Entities[entityIndex];
     switch (param) {
         case 'Id':
             ent.Id = value;

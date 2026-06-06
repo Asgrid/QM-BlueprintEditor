@@ -4,40 +4,32 @@ var NAMESPACES = {};
  * Loads namespaces and fills existing datalist elements.
  */
 function loadGUIDs() {
+    let lists = [];
     for (let tag in GUIDS) {
         if (tag == 'default') continue;
         for (let id in GUIDS[tag]) {
-            if (id == 'default' || id == 'Tags') continue;
+            if (id == 'default' || id == '_Tags' || id == '_Props') continue;
             NAMESPACES[GUIDS[tag][id]] = tag + '.' + id;
+        }
+
+        let p = GUIDS[tag]['_Props'];
+        if (!p) continue;
+        if (p.createList) {
+            let list = document.createElement('datalist');
+            list.id = (p.listName ?? tag)+'List';
+            list.dataset.tag = tag;
+            lists.push(list);
         }
     }
 
-    //Tiles
-    let ids = getTagList('Tiles');
-    let list = $('tileList');
-    for (let t of ids) {
-        list.innerHTML += `<option value="${t}"></option>`;
-    }
-
-    //Layers
-    ids = getTagList('Layers');
-    list = $('layerList');
-    for (let l of ids) {
-        list.innerHTML += `<option value="${l}"></option>`;
-    }
-
-    //Buffs
-    ids = getTagList('Buffs');
-    list = $('buffList');
-    for (let l of ids) {
-        list.innerHTML += `<option value="${l}"></option>`;
-    }
-
-    //Entities
-    ids = getTagList('Entities');
-    list = $('entityList');
-    for (let l of ids) {
-        list.innerHTML += `<option value="${l}"></option>`;
+    // Create datalists for autocompletion
+    let body = $('divBody');
+    for (let list of lists) {
+        ids = getTagList(list.dataset.tag);
+        for (let l of ids) {
+            list.innerHTML += `<option value="${l}"></option>`;
+        }
+        body.appendChild(list);
     }
 }
 
@@ -50,9 +42,9 @@ function getTagList(name) {
     let tag = GUIDS[name];
     let all = [];
     for (let l in tag) {
-        if (l == 'default') continue;
-        if (l == 'Tags') {
-            for (let t of tag.Tags) {
+        if (l == 'default' || l == '_Props') continue;
+        if (l == '_Tags') {
+            for (let t of tag._Tags) {
                 all.push(...getTagList(t));
             }
             continue;

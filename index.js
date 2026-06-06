@@ -8,7 +8,6 @@ var _Blueprint = undefined;
  */
 function init() {
     loadGUIDs();
-    defaultBP();
 }
 
 /**

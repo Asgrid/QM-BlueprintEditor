@@ -1,5 +1,17 @@
 var GUIDS = {
+    Layers: {
+        _Props: { createList: true },
+        Floor: "9f5a235f083938145bf1a286d3f33562",
+        Lowered: "8e8ce6a4d1b184258bc9f93eddcb96a8",
+        Hazards: "9e0a8dcd17a1a42a08ce84bdf8552937",
+        Decor: "6a80f4262edfb4e4e8d5bbdb1768f966",
+        Grating: "dd8091b6a6aee3b4992ed33e2882c652",
+        Overlay: "0bb86156bf6e0974895328acafc4161c",
+        Fences: "1997fb9fdd5744626862935ccde4d6e1",
+        Solid: "1620ca16711a0d64ebf397fd49b5f270"
+    },
     Tiles: {
+        _Props: { createList: true },
         Floor: "QuestMaster:Floor",
         Lowered: "QuestMaster:LoweredFloor",
         Pipe: "QuestMaster:Pipe",
@@ -16,37 +28,56 @@ var GUIDS = {
         Ice: "QuestMaster:Ice",
         Void: "QuestMaster:Void"
     },
-    Layers: {
-        Floor: "9f5a235f083938145bf1a286d3f33562",
-        Lowered: "8e8ce6a4d1b184258bc9f93eddcb96a8",
-        Hazards: "9e0a8dcd17a1a42a08ce84bdf8552937",
-        Decor: "6a80f4262edfb4e4e8d5bbdb1768f966",
-        Grating: "dd8091b6a6aee3b4992ed33e2882c652",
-        Overlay: "0bb86156bf6e0974895328acafc4161c",
-        Fences: "1997fb9fdd5744626862935ccde4d6e1",
-        Solid: "1620ca16711a0d64ebf397fd49b5f270"
-    },
-    Enemies: {
-        Zorb: "38384012ceb1d45a4a68ed0824df756b"
-    },
     Entities: {
-        Tags: [
-            "Enemies",
+        _Props: { createList: true },
+        _Tags: [
+            "Doors",
+            "Decor",
             "Projectiles",
             "Containers",
+            "Items",
+            "Enemies",
             "Bosses",
-            "Interactables",
+            "Hazards",
             "Traps",
-            "Switches"
+            "Interactables",
+            "Switches",
+            "Zones",
+            "Rails",
+            "Gizmos",
+            "Signs",
+            "Walls"
         ]
     },
     Spawnables: {
-        Tags: [
+        _Props: { createList: true },
+        _Tags: [
             "Enemies",
             "Projectiles"
         ]
     },
+    Receivables: {
+        _Props: { createList: true },
+        _Tags: [
+            'Items',
+            'Enemies',
+            'Bosses'
+        ],
+        BurnTrap: "eda50b15f608542a283e5ecc0f62c51d",
+        CurseTrap: "94d40a678b11d49ce91a0bf65e245211",
+        ShockTrap: "40695932acb39489883152f43d912fa7",
+        FreezeTrap: "4538b9696c59d4151831314896bf79ae"
+    },
+    Doors: {
+        Door: "d4b591a7123cf544c942561ac36c3555",
+        DownwardLadder: "ee7ada810c3e14cf8a9cf8834c345ad0",
+        UpdwardLadder: "6189618f7e5f84c118a02104c6c96136"
+    },
+    Decor: {
+        Rugs: "b7205e94d772544739cbbf50dd2aab19"
+    },
     Buffs: {
+        _Props: { createList: true },
         Fire: "QuestMaster:Fire",
         Spectral: "QuestMaster:Spectral",
         Ice: "QuestMaster:Ice",
@@ -55,7 +86,8 @@ var GUIDS = {
         Frozen: "QuestMaster:EternallyFrozen",
         Shadow: "QuestMaster:Shadow"
     },
-    Projectiles: {
+    Projectile: {
+        _Props: { createList: true },
         Rock: "QuestMaster:Rock",
         Snowball: "QuestMaster:Snowball",
         Bomb: "b909098eb73034575af0fa93e66498f8",
@@ -79,6 +111,56 @@ var GUIDS = {
         Chest: "ea8177de24782e84fa4cf6e5854a6dd4",
         Pedestal: "ff61144c334732e41847074eaf484522"
     },
+    Items: {
+        Tags: [
+            'Passives',
+            'Tools',
+            'Rings'
+        ],
+        Fairy: "ed7c91b9df5ae4c3592ae277c7990625",
+        Map: "7df90684d14d9894d96bf279cf6d8c9c",
+        HeartFragment: "045944ef287a04641b0becaf3a909123",
+        HeartCrystal: "8fa35ec0a8d95804ba07c7081f1a076c",
+        GoalGem: "d5a8981af60bf4d5f954ec20cab27b46",
+        SmallKey: "7efeb80b45190574e81fc2fb550966f0",
+        SkeletonKey: "1c6b5bea6bd5c48e092c3b64f4f4db38",
+        SquareGem: "7ec86583b56dd49c3af79bb14220dd5c",
+        BigKey: "c5e904006ce96ce458ce44743eef02b7"
+    },
+    Rings: {
+        RingBox: "8faf15cc0c77f494ea69c8c8d2dbca5a",
+        BigRingBox: "994af5ceb666f43bdb0426858015f45f",
+        GiantRingBox: "a70754cfa212240e6b7ba733f9746a8a",
+        ColossalRingBox: "4fcb56c23e00549c192d9a417674ac1c"
+    },
+    Passives: {
+        Lantern: "0cf7f005095a28d4ca4212e6b55a3173",
+        FreezeflameLantern: "4b7c0dcf401484abf9d904b538b14eca",
+        HermesBoots: "fab8ee9787a3747ebbac8397702c0e87",
+        SpectralLantern: "906daae7471314971a076c037fb1700f",
+        Pouch: "0c5d4c96fd71543b8814e93c1f716694",
+        Sword: "e167235188b734f2e8019a53b574dab8",
+        Sword2: "d676c52c13c731249a8751023457cb8b",
+        Shovel: "57d72d9472f9c438f8e1c91a581b0255",
+        PlankShield: "3d20489c4756c466f9338963c332374b",
+        MirrorShield: "a9401def8d1584a8c890c301c72b82c8",
+        MetalShield: "a52c1d7252c3dba4696ed686d50627be",
+        TreeBranch: "eccc2ab5c89314e038bbe208dfb203ad",
+        Flippers: "89cf5ba4337919e439932a09735f3f8f"
+    },
+    Tools: {
+        FireRod: "cdab999d0713ac040b316667fbbee700",
+        ColorRod: "a3bbbf447995549e5babea1c5668182c",
+        TornadoRod: "dc058350cf9c746429d3321cc7f421f1",
+        SpectralRod: "8cf97150319424dbd94b7494b1fcb75c",
+        IceRod: "df610e1175384824ea4fc1118f1e47a8",
+        RemoteBombs: "b236f144bb1d04780a7aa24aa1df1ed5",
+        Hammer: "9074dd28ffdcb4506ae245fedd5bba55",
+        Boomerang: "bda038d7655b53146ba89ea6a8042721",
+        FireBoomerang: "d583e361863b042da93aee338394fcf2",
+        SpectralBoomerang: "5604c46862a014bc4bca38d8fa96b69c",
+        IceBoomerang: "478a30257b7414264925df257f358dc6"
+    },
     Enemies: {
         Slumberwing: "3f432d93edd82084a982a75d6251a50e",
         Shellshot: "b2d6cf2469bfd8e4b90a34714bd95525",
@@ -99,6 +181,31 @@ var GUIDS = {
         Golmec: "f053e2eb885d64fcbb96e85baa06c9db",
         Lunarc: "e27b743e3866746389443ed22e5b7fd9",
         Zorbius: "2fe8af659493f4593a53a23260e562b9"
+    },
+    Hazards: {
+        FireBar: "0305267694564bc4085f9408c9cbd961",
+        FireBar2: "67bd8a14fc9f3714aa8e5bc4b360f2c0",
+        FireBar3: "9357eaf913451c341a7e832dcfb55bd8",
+        FireBar4: "b865347e6bd40204daf0409c22140ce0",
+        MetalBar: "774538810b30e4ed5a3d3f0c8cda7984",
+        MetalBar2: "911b1ff8b026b4522bfb3663a9ba2c0a",
+        MetalBar4: "c5c93616c266a41a5becd92e10c6f4a5",
+        FloorSpike: "df40dc940b34e4b3aaf55e2e884d7579",
+        SpectralBar: "1faf1ebc7c4524d648569a6224cc3ab6",
+        SpectralBar3: "4cf5d4e73e3dc4d53bd69e5e5f363f32",
+        SpectralBar4: "3f6ed100042204bbcbed1a0cc3af90f8",
+        FireElemental: "3fe235a93069640739fbda1edc870621",
+        ShockElemental: "9875001ed90a04434ac9222e89b72eb9"
+    },
+    Traps: {
+        Explosion: "0d3df2298e7af3541b97c5e609bf7796",
+        Bubble: "696d89a254af44d7cb15fb46a00a8336",
+        LitBomb: "0ca99b21e76274f5fbf656aab3edd531",
+        Mine: "8edcb642eb8704edb8c512d045c9bbcb",
+        ReactiveBladeTrap: "6fdef16e256d6c5408829a8185fffa48",
+        DirectionalBladeTrap: "ca5b362d5d59b6a4295aa391f6329028",
+        StickyBladeTrap: "cb2ca923ebf774d4fa11299fb568cac4",
+        ArrowTrap: "4bf18c2673886441f84efe09b23c73f0"
     },
     Interactables: {
         Pot: "440918950ef2ed54097825fdeedd21a7",
@@ -122,22 +229,6 @@ var GUIDS = {
         WallSign: "ac1b5e9b1b7c24e9abfd68e3b38c12a8",
         TattleTotem: "84e5aa47791cf42449e7c54f57ffb32e"
     },
-    Traps: {
-        Explosion: "0d3df2298e7af3541b97c5e609bf7796",
-        Bubble: "696d89a254af44d7cb15fb46a00a8336",
-        LitBomb: "0ca99b21e76274f5fbf656aab3edd531",
-        Mine: "8edcb642eb8704edb8c512d045c9bbcb",
-        ReactiveBladeTrap: "6fdef16e256d6c5408829a8185fffa48",
-        DirectionalBladeTrap: "ca5b362d5d59b6a4295aa391f6329028",
-        StickyBladeTrap: "cb2ca923ebf774d4fa11299fb568cac4",
-        ArrowTrap: "4bf18c2673886441f84efe09b23c73f0"
-    },
-    Receivable: {
-        BurnTrap: "eda50b15f608542a283e5ecc0f62c51d",
-        CurseTrap: "94d40a678b11d49ce91a0bf65e245211",
-        ShockTrap: "40695932acb39489883152f43d912fa7",
-        FreezeTrap: "4538b9696c59d4151831314896bf79ae"
-    },
     Switches: {
         ResetSwitch: "67adbd09c13df457eb0f02054a12a3b1",
         PressurePlate: "5e02f04ea39735e4da987d405bbadae0",
@@ -158,7 +249,50 @@ var GUIDS = {
         Sunlight: "3272e3b710a3d45a1a401147de3cfd57",
         SpectralLight: "44d76a6336fa04055998b3a9fde253e7"
     },
+    Rails: {
+        TRail: "597a5db181a034ce89f473b19b392412",
+        Junction: "a58d465f31644db458262c18ec627ab2",
+        Curved: "1f33dd15e0608ac44b6573d39c358a7b",
+        Minecart: "be2f577469d99224b88a0bf2e0cccab9",
+        StraightRail: "32a5541b536bd424a99f79ebbc4a849d",
+        TrackClosure: "898fa6728512a4f91b4275ed75eec090",
+        RailSwitchRS: "4e3c3df9e4059544f9be7b367e61f400",
+        RailSwitchR: "0b0a525d620369e40930839b66f2d0c1",
+        RailSwitchS: "211c19951224e494388e5e0ec0da1b37",
+        RailSwitch: "b0802540122a11b4486f80a5d6ed967f",
+        SlopeRail: "02174fadfede34700b9ac4b63903479d"
+    },
+    Gizmos: {
+        RadialBumper: "d90f0a01a7dec46aa9dfbcb46351ea05",
+        Retractable: "721cd83bfca572f47a9e0299da18977c",
+        Spring: "f27d2a10dba6d4bdba592a2404a79cfe"
+    },
+    Signs: {
+        ArrowUpRight: "d3d1920ca683146469302d2888120458",
+        ArrowUpLeft: "247db0cac68284d0a8d8133443531375",
+        ArrowUp: "fc0c452e4bb664d998e6440a530b8258",
+        ArrowRight: "765fd6266af30eb4bb61bfd8bfc28747",
+        ArrowLeft: "0875a248a916b4f8986e2a1b6dd41fe2",
+        ArrowDownward: "c5be7a6ea26524007a54bf0ba710cfa7",
+        ArrowDownRight: "e396305e7e6bf44aaa6c06222d454b85",
+        ArrowDownLeft: "e5a7f8b0e55bd44978f55f3a0669dc9a",
+        ArrowDown: "e1399f663e47e4c1b9f3f5f34a7d746f"
+    },
+    Walls: {
+        Staircase: "17e266ad084564541aaf330af661041b",
+        Slide: "297221558f3134bca806c92caf94b85c"
+    },
+    TechBuffs: {
+        IceMelt: "0139a8f08f33f4f7685b29c33b9960de",
+        IceBreak: "5987aa2c2e0a54f8a820cf86dd220ce3",
+        Impact: "44fc4633e57064cbfa33d3553d7fdf9f",
+        Sailing: "cf75450b7c4c4445cb5cde6e3cf9a66c",
+        MovingToHookshot: "6d4ab644eb7cd41c1b17f54adb70b92c",
+        GolmecNoGrav: "52ad8f072c802461886c931b15a2faa1",
+        Carried: "6cddf44319f5e4ef4ba5d89fcbed06d0"
+    },
     Group: {
+        _Props: { createList: true },
         Square: "4953d121eb8854c68a7e9d93c35b1ec3",
         SquareInverse: "353bcfb2ae7e34285aa3152fd23eceec",
         Triangle: "17f5cd4b033c34549ae458df1fe0fad0",
@@ -211,6 +345,7 @@ var GUIDS = {
         CloverFragInverse: "546b37677382c4b46a445b12773ec955"
     },
     Condition: {
+        _Props: { createList: true },
         Square: "379d26a9ddcf5445db6a500b0dfa7f46",
         Triangle: "969e54f872eb845ff81b3fcc6aa939f9",
         Circle: "f8deecebdbe1b42749119aa85aaf7d17",
@@ -247,12 +382,14 @@ var GUIDS = {
         FloorSwitchesWrong: "97c2d76f90d184b3db8348a51beb57b4"
     },
     Attachment: {
+        _Props: { createList: true },
         Wings: "71dc88ef1c4fa451eb48068b450c1c12",
         Balloon: "992750409894e4585ab3d28243ae7de4",
         SwimRing: "874034076873a4dc68aae56610773361",
         Elevation: "b95c3e3f397294559bd6c112d603b09e"
     },
     Speed: {
+        _Props: { createList: true },
         Speed1: "d04c316893df54fbcb0cd180dc73e557",
         Speed2: "4d87af778f0104017afb88ccc14be7e2",
         Speed3: "2102ffba05b274e359907ca8c4b7d997",
@@ -260,6 +397,7 @@ var GUIDS = {
         Speed5: "c48d5453daf5b40a08af2c26fc507d5c"
     },
     PushDirection: {
+        _Props: { createList: true },
         All: "b972b28043dc14f2cb70cd3e45eb584b",
         Horizontal: "daee556fb46a04913835fed9ebbfa856",
         Vertical: "499fb91b425bf49f3a947c5ab3d7e5db",
@@ -270,10 +408,12 @@ var GUIDS = {
         None: "c92c185f6e7df4c6fb7af3459c10364f"
     },
     PushCount: {
+        _Props: { createList: true },
         Infinite: "e8f285947127a46c499f68e328c45f1c",
         One: "22cef2aed39d0412b8a6f1b30431df2e"
     },
     Duration: {
+        _Props: { createList: true },
         "1/10": "QuestMaster:OneTenthOfASecond",
         "1/4": "QuestMaster:OneFourthOfASecond",
         "1/2": "QuestMaster:HalfASecond",
@@ -292,128 +432,16 @@ var GUIDS = {
         "60": "QuestMaster:SixtySeconds"
     },
     Turn: {
+        _Props: { createList: true },
         Clockwise: "9242e0d707fb5488ab16df4ba43337f6",
         CounterCW: "e632c06cadd3543dbb8bdb40092a1657",
         Backwards: "9c83a8723c7614cafa7d271320b73e66",
         None: "358a39e31744b40dca54f388b2ed4886"
     },
     RotationDirection: {
+        _Props: { createList: true },
         Clockwise: "c898c7a3426904a46ab32dae94f65685",
         CounterCW: "d34ebd563a327447ab8f200f0415881e",
         None: "6286740fea2d24b49aac90af8f790980"
-    },
-    Passives: {
-        Lantern: "0cf7f005095a28d4ca4212e6b55a3173",
-        FreezeflameLantern: "4b7c0dcf401484abf9d904b538b14eca",
-        HermesBoots: "fab8ee9787a3747ebbac8397702c0e87",
-        SpectralLantern: "906daae7471314971a076c037fb1700f",
-        Pouch: "0c5d4c96fd71543b8814e93c1f716694",
-        Sword: "e167235188b734f2e8019a53b574dab8",
-        Sword2: "d676c52c13c731249a8751023457cb8b",
-        Shovel: "57d72d9472f9c438f8e1c91a581b0255",
-        PlankShield: "3d20489c4756c466f9338963c332374b",
-        MirrorShield: "a9401def8d1584a8c890c301c72b82c8",
-        MetalShield: "a52c1d7252c3dba4696ed686d50627be",
-        TreeBranch: "eccc2ab5c89314e038bbe208dfb203ad",
-        Flippers: "89cf5ba4337919e439932a09735f3f8f"
-    },
-    Tools: {
-        FireRod: "cdab999d0713ac040b316667fbbee700",
-        ColorRod: "a3bbbf447995549e5babea1c5668182c",
-        TornadoRod: "dc058350cf9c746429d3321cc7f421f1",
-        SpectralRod: "8cf97150319424dbd94b7494b1fcb75c",
-        IceRod: "df610e1175384824ea4fc1118f1e47a8",
-        RemoteBombs: "b236f144bb1d04780a7aa24aa1df1ed5",
-        Hammer: "9074dd28ffdcb4506ae245fedd5bba55",
-        Boomerang: "bda038d7655b53146ba89ea6a8042721",
-        FireBoomerang: "d583e361863b042da93aee338394fcf2",
-        SpectralBoomerang: "5604c46862a014bc4bca38d8fa96b69c",
-        IceBoomerang: "478a30257b7414264925df257f358dc6"
-    },
-    Rails: {
-        TRail: "597a5db181a034ce89f473b19b392412",
-        Junction: "a58d465f31644db458262c18ec627ab2",
-        Curved: "1f33dd15e0608ac44b6573d39c358a7b",
-        Minecart: "be2f577469d99224b88a0bf2e0cccab9",
-        StraightRail: "32a5541b536bd424a99f79ebbc4a849d",
-        TrackClosure: "898fa6728512a4f91b4275ed75eec090",
-        RailSwitchRS: "4e3c3df9e4059544f9be7b367e61f400",
-        RailSwitchR: "0b0a525d620369e40930839b66f2d0c1",
-        RailSwitchS: "211c19951224e494388e5e0ec0da1b37",
-        RailSwitch: "b0802540122a11b4486f80a5d6ed967f",
-        SlopeRail: "02174fadfede34700b9ac4b63903479d"
-    },
-    Gizmos: {
-        RadialBumper: "d90f0a01a7dec46aa9dfbcb46351ea05",
-        Retractable: "721cd83bfca572f47a9e0299da18977c",
-        Spring: "f27d2a10dba6d4bdba592a2404a79cfe"
-    },
-    Leaks: {
-        Rapids: "b47def970d1054513ac0335033f4169a",
-        ElectricBoomerang: "a3957a6e5ecb64f508e1b4c7e9161130"
-    },
-    Rings: {
-        RingBox: "8faf15cc0c77f494ea69c8c8d2dbca5a",
-        BigRingBox: "994af5ceb666f43bdb0426858015f45f",
-        GiantRingBox: "a70754cfa212240e6b7ba733f9746a8a",
-        ColossalRingBox: "4fcb56c23e00549c192d9a417674ac1c"
-    },
-    Items: {
-        Fairy: "ed7c91b9df5ae4c3592ae277c7990625",
-        Map: "7df90684d14d9894d96bf279cf6d8c9c",
-        HeartFragment: "045944ef287a04641b0becaf3a909123",
-        HeartCrystal: "8fa35ec0a8d95804ba07c7081f1a076c",
-        GoalGem: "d5a8981af60bf4d5f954ec20cab27b46",
-        SmallKey: "7efeb80b45190574e81fc2fb550966f0",
-        SkeletonKey: "1c6b5bea6bd5c48e092c3b64f4f4db38",
-        SquareGem: "7ec86583b56dd49c3af79bb14220dd5c",
-        BigKey: "c5e904006ce96ce458ce44743eef02b7"
-    },
-    Hazards: {
-        FireBar: "0305267694564bc4085f9408c9cbd961",
-        FireBar2: "67bd8a14fc9f3714aa8e5bc4b360f2c0",
-        FireBar3: "9357eaf913451c341a7e832dcfb55bd8",
-        FireBar4: "b865347e6bd40204daf0409c22140ce0",
-        MetalBar: "774538810b30e4ed5a3d3f0c8cda7984",
-        MetalBar2: "911b1ff8b026b4522bfb3663a9ba2c0a",
-        MetalBar4: "c5c93616c266a41a5becd92e10c6f4a5",
-        FloorSpike: "df40dc940b34e4b3aaf55e2e884d7579",
-        SpectralBar: "1faf1ebc7c4524d648569a6224cc3ab6",
-        SpectralBar3: "4cf5d4e73e3dc4d53bd69e5e5f363f32",
-        SpectralBar4: "3f6ed100042204bbcbed1a0cc3af90f8",
-        FireElemental: "3fe235a93069640739fbda1edc870621",
-        ShockElemental: "9875001ed90a04434ac9222e89b72eb9"
-    },
-    TechBuffs: {
-        IceMelt: "0139a8f08f33f4f7685b29c33b9960de",
-        IceBreak: "5987aa2c2e0a54f8a820cf86dd220ce3",
-        Impact: "44fc4633e57064cbfa33d3553d7fdf9f",
-        Sailing: "cf75450b7c4c4445cb5cde6e3cf9a66c",
-        MovingToHookshot: "6d4ab644eb7cd41c1b17f54adb70b92c",
-        GolmecNoGrav: "52ad8f072c802461886c931b15a2faa1",
-        Carried: "6cddf44319f5e4ef4ba5d89fcbed06d0"
-    },
-    Doors: {
-        Door: "d4b591a7123cf544c942561ac36c3555",
-        DownwardLadder: "ee7ada810c3e14cf8a9cf8834c345ad0",
-        UpdwardLadder: "6189618f7e5f84c118a02104c6c96136"
-    },
-    Decor: {
-        Rugs: "b7205e94d772544739cbbf50dd2aab19"
-    },
-    Signs: {
-        ArrowUpRight: "d3d1920ca683146469302d2888120458",
-        ArrowUpLeft: "247db0cac68284d0a8d8133443531375",
-        ArrowUp: "fc0c452e4bb664d998e6440a530b8258",
-        ArrowRight: "765fd6266af30eb4bb61bfd8bfc28747",
-        ArrowLeft: "0875a248a916b4f8986e2a1b6dd41fe2",
-        ArrowDownward: "c5be7a6ea26524007a54bf0ba710cfa7",
-        ArrowDownRight: "e396305e7e6bf44aaa6c06222d454b85",
-        ArrowDownLeft: "e5a7f8b0e55bd44978f55f3a0669dc9a",
-        ArrowDown: "e1399f663e47e4c1b9f3f5f34a7d746f"
-    },
-    Walls: {
-        Staircase: "17e266ad084564541aaf330af661041b",
-        Slide: "297221558f3134bca806c92caf94b85c"
     }
 };

@@ -51,6 +51,14 @@ class Blueprint {
         encodeBP();
     }
 
+    getEntity(index){
+        if (index>=0) return this.Entities[index];
+
+        let parent = Math.abs(index)-1;
+        let ent = this.Entities[parent];
+        return ent.Spawnable ?? ent.Receivable;
+    }
+
     /**
      * Encodes the blueprint data back into text.
      * @returns {string} base64 encoded text
