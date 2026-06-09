@@ -58,7 +58,7 @@ var GUIDS = {
         ]
     },
     Receivables: {
-        _Props: { createList: true },
+        _Props: { createList: true, append: "Traps.Explosion" },
         _Tags: [
             'Items',
             'Enemies',
@@ -88,7 +88,7 @@ var GUIDS = {
         Frozen: "QuestMaster:EternallyFrozen",
         Shadow: "QuestMaster:Shadow"
     },
-    Projectile: {
+    Projectiles: {
         _Props: { createList: true },
         Rock: "QuestMaster:Rock",
         Snowball: "QuestMaster:Snowball",
@@ -114,7 +114,7 @@ var GUIDS = {
         Pedestal: "ff61144c334732e41847074eaf484522"
     },
     Items: {
-        Tags: [
+        _Tags: [
             'Passives',
             'Tools',
             'Rings'

@@ -5,6 +5,7 @@ class Entity {
      * @param {Entity} stack - Parent entity (used with spawnable/receivable properties)
      */
     constructor(obj, stack = undefined) {
+        this.Parent = stack;
         if (stack)
             this.isStack = true;
         else

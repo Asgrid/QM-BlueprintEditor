@@ -72,9 +72,13 @@ function renderEntity(entity, index) {
     let html =  `   <legend>${entity.Id}</legend>
                     <p>
                         <b>Id</b>:<space></space>`;
-    html+=$idInput(index, entity.Id, entity.isStack ? 'SpawnablesList' : 'EntitiesList', 'ent_id', `bindEntity(${index}, 'Id', this.value)`);
+    html+=$idInput(index, entity.Id,
+                    entity.isStack
+                    ? (entity.Parent.Receivable ? 'ReceivablesList' : 'SpawnablesList')
+                    : 'EntitiesList',
+                    'ent_id', `bindEntity(${index}, 'Id', this.value)`);
     html += `           <space></space>
-                        <button onclick="_Blueprint.RemoveEntity(${index})">🗑</button>
+                        <button onclick="_Blueprint.removeEntity(${index})">🗑</button>
                     </p>`;
 
     if (entity.Position) {
