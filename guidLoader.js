@@ -38,18 +38,18 @@ function loadGUIDs() {
  * @param {string} name 
  * @returns {string[]}
  */
-function getTagList(name) {
+function getTagList(name, withNS = false) {
     let tag = GUIDS[name];
     let all = [];
     for (let l in tag) {
         if (l == 'default' || l == '_Props') continue;
         if (l == '_Tags') {
             for (let t of tag._Tags) {
-                all.push(...getTagList(t));
+                all.push(...getTagList(t, withNS));
             }
             continue;
         }
-        all.push(l);
+        all.push(withNS ? `${name}.${l}` : l);
     }
     return all;
 }
@@ -72,6 +72,13 @@ function toID(namespace, txt) {
     } else if (Object.hasOwn(GUIDS[namespace], txt)) {
         // Implicit namespace
         return GUIDS[namespace][txt];
+    } else {
+        let names = getTagList(namespace, true);
+        for (let n of names){
+            if (n.endsWith('.'+txt)){
+                return toID(namespace, n);
+            }
+        }
     }
     return txt; // Give up
 }

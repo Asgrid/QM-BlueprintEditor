@@ -41,6 +41,9 @@ function bindEntity(entityIndex, param, value, param2 = undefined) {
         case 'Buff':
             ent.Buffs[param2] = value;
             break;
+        case 'Message':
+            ent.Message = value.replaceAll("\r\n","\n").replaceAll("\n","\\n");
+            break;
         case 'Prop':
             ent.Properties[param2] = value;
             break;

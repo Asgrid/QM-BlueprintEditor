@@ -18,6 +18,7 @@ class Entity {
         this.Spawnable = null;
         this.Receivable = null;
         this.Projectile = null;
+        this.Message = null;
         for (let prop in obj) {
             if (prop=='default') continue;
             switch (prop) {
@@ -29,6 +30,9 @@ class Entity {
                     break;
                 case "Position":
                     this.Position = obj[prop];
+                    break;
+                case "Message":
+                    this.Message = obj[prop];
                     break;
                 case "Buffs":
                     let list = [];
@@ -127,6 +131,24 @@ class Entity {
     }
 
     /**
+     * Removes the Receivable property.
+     */
+    removeReceivable() {
+        this.Receivable = null;
+        renderEntities();
+        encodeBP();
+    }
+
+    /**
+     * Removes the Message property.
+     */
+    removeMessage() {
+        this.Message = null;
+        renderEntities();
+        encodeBP();
+    }
+
+    /**
      * Removes the Projectile property.
      */
     removeProjectile() {
@@ -155,6 +177,9 @@ class Entity {
                 break;
             case "Projectile":
                 this.Projectile = "?";
+                break;
+            case "Message":
+                this.Message = "";
                 break;
             default:
                 this.Properties[key] = null;
@@ -190,6 +215,11 @@ class Entity {
             "Size": this.Size,
             "Buffs": buffs
         };
+
+        //Message
+        if (this.Message) {
+            obj.Message = this.Message;
+        }
 
         //Spawnable
         if (this.Spawnable) {

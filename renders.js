@@ -185,6 +185,14 @@ function renderEntity(entity, index) {
         }
     }
 
+    if (entity.Message != null) {
+        html += `   <p>
+                        <b>Message</b>:
+                        <space></space>
+                        <textarea rows="4" style="width: 100%" onchange="bindEntity(${index}, 'Message', this.value)">${entity.Message.replaceAll("\\n", "\n")}</textarea>
+                    </p>`;
+    }
+
     //'Add property' button
     html += `<p>
                 <input id="ent_${index}_newprop">
