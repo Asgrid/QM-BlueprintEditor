@@ -4,17 +4,17 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Blueprint Editor</title>
-    <link rel='stylesheet' href='index.css'>
-    <script src="renders.js"></script>
-    <script src="bindings.js"></script>
-    <script src="components.js"></script>
-    <script src="guids.js"></script>
-    <script src="guidLoader.js"></script>
+    <link rel='stylesheet' href='src/index.css'>
+    <script src="src/renders.js"></script>
+    <script src="src/bindings.js"></script>
+    <script src="src/components.js"></script>
+    <script src="src/guids.js"></script>
+    <script src="src/guidLoader.js"></script>
     <script src="clases/entity.js"></script>
     <script src="clases/tilemap.js"></script>
     <script src="clases/bp.js"></script>
-    <script src="index.js"></script>
-    <link rel="icon" type="image/png" href="favicon.ico">
+    <script src="src/index.js"></script>
+    <link rel="icon" type="image/png" href="src/favicon.ico">
 </head>
 <body>
     
@@ -22,7 +22,6 @@
     <div class="column">
         <div class="row" style="justify-content: space-between">
             <label for="txtBlueprint"><b>Blueprint text:</b></label>
-            <button onclick="defaultBP()">Set default</button>
         </div>
         <textarea id="txtBlueprint" class="bpArea" value="" onchange="decodeBP();"></textarea>
         <div id="divBPError" style="text-align:end; color: red; display: none">Invalid blueprint format</div>

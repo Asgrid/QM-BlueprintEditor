@@ -61,7 +61,7 @@ function getTagList(name, withNS = false) {
  * @returns 
  */
 function toID(namespace, txt) {
-    if (txt === null) return null;
+    if (txt === null || txt === undefined) return null;
     let split = txt.split('.');
     if (split.length == 2) {
         // Explicit namespace
@@ -73,6 +73,7 @@ function toID(namespace, txt) {
         // Implicit namespace
         return GUIDS[namespace][txt];
     } else {
+        // Search inside included tags
         let names = getTagList(namespace, true);
         for (let n of names){
             if (n.endsWith('.'+txt)){
